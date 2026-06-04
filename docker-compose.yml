@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: mri_postgres_db
+    environment:
+      POSTGRES_USER: mri_admin
+      POSTGRES_PASSWORD: mri_password_secure
+      POSTGRES_DB: smart_mri_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./backend/sql:/docker-entrypoint-initdb.d
+      - ./backend/master_hospitals.csv:/tmp/master_hospitals.csv
+      - ./backend/patient_queues.csv:/tmp/patient_queues.csv
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mri_network
+
+  backend:
+    build: ./backend
+    container_name: mri_fastapi_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://mri_admin:mri_password_secure@db:5432/smart_mri_db
+    depends_on:
+      - db
+    networks:
+      - mri_network
+
+volumes:
+  postgres_data:
+
+networks:
+  mri_network:
+    driver: bridge

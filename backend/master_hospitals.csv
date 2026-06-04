@@ -1,0 +1,45 @@
+id_rs,nama_rs,wilayah,latitude,longitude,jumlah_mri,current_occupancy,max_capacity
+RS_001,RSUPN Dr. Cipto Mangunkusumo (RSCM) (Multi-Mesin Kelas Rujukan Nasional),Jakarta Pusat,-6.1972417,106.8467866,3,60,70
+RS_002,RSPAD Gatot Soebroto (Tipe A Militer),Jakarta Pusat,-6.18333,106.83333,5,31,48
+RS_003,RS Islam Jakarta Cempaka Putih,Jakarta Pusat,-6.1762000,106.8680000,1,18,30
+RS_004,Siloam Hospitals Agora (Pusat Trauma),Jakarta Pusat,-6.17620,106.86800,1,21,33
+RS_005,Primaya Hospital PGI Cikini,Jakarta Pusat,-6.18333,106.83333,1,14,25
+RS_006,RSU Murni Teguh Sudirman Jakarta,Jakarta Pusat,-6.21667,106.81667,1,22,28
+RS_007,RSU Hermina Kemayoran (Subsidiari Ibu Anak/Neuro),Jakarta Pusat,-6.15583,106.85222,1,19,23
+RS_008,RSU Husada Pusat (Warisan Historis),Jakarta Pusat,-6.18333,106.83333,1,16,23
+RS_009,RSU Kramat 128,Jakarta Pusat,-6.18333,106.83333,1,12,23
+RS_010,RSU Mitra Kemayoran,Jakarta Pusat,-6.18333,106.83333,1,19,28
+RS_011,RS Abdi Waluyo (Terpadu MR-HIFU Tumor),Jakarta Pusat (Menteng),-6.19167,106.83333,2,27,30
+RS_012,RSUD Pasar Minggu (BPJS Paripurna Selatan),Jakarta Selatan,-6.26667,106.80833,1,35,40
+RS_013,Siloam Hospitals TB Simatupang (Ortopedi),Jakarta Selatan,-6.2922591,106.7900000,3,50,48
+RS_014,Brawijaya Hospital Duren Tiga (Eksekutif Premium),Jakarta Selatan,-6.26667,106.80833,1,25,20
+RS_015,MRCCC Siloam Hospitals Semanggi (PET Integrasi Onkologi LINAC),Jakarta Selatan,-6.21944,106.81667,2,49,53
+RS_016,Mayapada Hospital Jakarta Selatan (Lebak Bulus/Urologi),Jakarta Selatan,-6.28917,106.78250,1,45,40
+RS_017,Rumah Sakit Pondok Indah (RSPI) (Sertifikasi JCI Eksekutif),Jakarta Selatan,-6.28441,106.78102,2,29,50
+RS_018,Rumah Sakit Jakarta (Pusat Long View Ortopedi Spinal 24 Jam),Jakarta Selatan,-6.21667,106.81667,1,44,45
+RS_019,RS Medistra (Kardiologi Intervensi Mikro),Jakarta Selatan,-6.23972,106.83383,1,41,38
+RS_020,RSUP Fatmawati (Ortopedi Nasional),Jakarta Selatan,-6.29528,106.79833,2,39,55
+RS_021,Klinik Utama Medika SOS Cipete (Evakuasi Medis Expat),Jakarta Selatan,-6.27667,106.80417,1,21,15
+RS_022,Mandaya Royal Hospital Puri (Award Bedah Saraf Nasional),Jakarta Barat,-6.19500,106.71167,1,31,45
+RS_023,RSJPD Harapan Kita (Pusat Kardiovaskular Nasional),Jakarta Barat,-6.19167,106.79833,1,37,43
+RS_024,Pusat Kanker Nasional Rumah Sakit Dharmais,Jakarta Barat,-6.19167,106.79833,2,50,58
+RS_025,RS EMC Grha Kedoya (Wide Bore Rehabilitasi),Jakarta Barat,-6.17500,106.76000,1,37,35
+RS_026,Siloam Hospitals Kebon Jeruk (Pusat Trauma Saraf),Jakarta Barat,-6.19333,106.76500,1,34,45
+RS_027,RS Pondok Indah Puri Indah (Laparoskopi Darurat),Jakarta Barat,-6.27205,106.69808,1,31,35
+RS_028,RSU Hermina Daan Mogot (Kebidanan Lanjut),Jakarta Barat,-6.15500,106.71167,1,27,25
+RS_029,Tzu Chi Hospital PIK (Revolusi Ganda AI 1.5T dan Tabung Besar 3T),Jakarta Utara,-6.107030,106.741200,2,48,83
+RS_030,Rumah Sakit Gading Pluit (Magnetom Avanto Fit TIM 4G),Jakarta Utara,-6.15833,106.90833,1,37,40
+RS_031,RS Pondok Indah Kapuk (RS PIK Whole Body Skrining),Jakarta Utara,-6.11167,106.74167,1,33,35
+RS_032,RS Satya Negara (Kranial Bedah Saraf Kritis),Jakarta Utara,-6.13833,106.86167,1,29,30
+RS_033,RSU Atma Jaya (Integrasi Wahana Akademik Residen),Jakarta Utara,-6.12667,106.79167,1,25,30
+RS_034,RS Penyakit Infeksi Prof. Dr. Sulianti Saroso (Otak Karantina Khusus),Jakarta Utara,-6.13333,106.86167,1,30,20
+RS_035,Mitra Keluarga Kelapa Gading (Ortopedi Muskuloskeletal Paripurna),Jakarta Utara,-6.15833,106.90833,1,39,40
+RS_036,Primaya Hospital Kelapa Gading (Cardiac MRI Pemetaan Denyut),Jakarta Utara,-6.16667,106.91667,1,47,35
+RS_037,RS Islam Jakarta Sukapura (Radiologi Alternatif Utilitas Pesisir Urban),Jakarta Utara,-6.14167,106.92500,1,21,25
+RS_038,RSUD Koja (Sentra Penanganan Trauma Logistik Perindustrian Publik),Jakarta Utara,-6.208239,106.838821,1,28,35
+RS_039,RS Pusat Otak Nasional (RSPON) Prof. Dr. dr. Mahar Mardjono,Jakarta Timur,-6.246049,106.870470,2,51,65
+RS_040,RSUP Persahabatan (Respirasi Jantung Kanker),Jakarta Timur,-6.19500,106.88333,2,43,50
+RS_041,Premier Jatinegara Hospital (Fusi Intervensi One-Stop Services),Jakarta Timur,-6.22500,106.86667,2,41,48
+RS_042,RS EMC Pulomas (Bedah 24 Jam Darurat),Jakarta Timur,-6.17500,106.88333,1,33,40
+RS_043,Columbia Asia Hospital Pulomas,Jakarta Timur,-6.182036790765541,106.8912641,1,37,35
+RS_044,RS Antam Medika (Trauma Perindustrian Logistik Utara Timur Paripurna),Jakarta Timur,-6.192675,106.902506,1,38,30

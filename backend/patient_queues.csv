@@ -1,0 +1,40 @@
+id_pasien,id_rs,nama,tipe_kasus,status_prioritas,waktu_masuk,durasi_menit
+RSA-0001,RS_020,Paris Ramadan,Checkup Rutin Saraf,0,1:20,25
+RSA-0002,RS_020,Dt. Maman Latupono,Checkup Rutin Saraf,0,2:06,26
+RSA-0003,RS_020,"Timbul Nasyiah, S.T.",Trauma Saraf Tulang Belakang,1,2:18,52
+RSA-0004,RS_020,"Ir. Ganep Kusumo, S.Pd",Cedera Ligamen Lutut (ACL),0,2:48,26
+RSA-0005,RS_020,Endah Hasanah,Evaluasi Tumor Otak,0,2:59,35
+RSA-0006,RS_020,Xanana Saptono,Evaluasi Tumor Otak,0,3:34,39
+RSA-0007,RS_020,KH. Cemani Mayasari,Cedera Ligamen Lutut (ACL),0,3:37,31
+RSA-0008,RS_020,Tedi Utami,Checkup Rutin Saraf,0,3:54,35
+RSA-0009,RS_020,Zaenab Uyainah,Evaluasi Tumor Otak,0,4:31,38
+RSA-0010,RS_020,Drs. Dalimin Mangunsong,Cedera Ligamen Lutut (ACL),0,4:59,25
+RSA-0011,RS_020,Vanesa Marpaung,Evaluasi Tumor Otak,0,5:34,37
+RSA-0012,RS_020,KH. Virman Nuraini,Migrain Kronis,0,5:44,27
+RSA-0013,RS_020,Liman Sinaga,Checkup Rutin Saraf,0,7:06,31
+RSA-0014,RS_020,Anita Kusumo,Migrain Kronis,0,8:34,31
+RSA-0015,RS_020,Yance Samosir,Trauma Saraf Tulang Belakang,1,8:59,53
+RSA-0016,RS_020,Asmianto Permadi,Checkup Rutin Saraf,0,9:17,34
+RSA-0017,RS_020,Puti Chelsea Laksita,Cedera Ligamen Lutut (ACL),0,9:53,34
+RSA-0018,RS_020,"Puti Vanya Nasyidah, S.E.I",Checkup Rutin Saraf,0,10:03,25
+RSA-0019,RS_020,Maryanto Kusmawati,Pendarahan Intrakranial,1,11:25,59
+RSA-0020,RS_020,R.M. Eman Nuraini,Cedera Ligamen Lutut (ACL),0,11:27,33
+RSA-0021,RS_020,"Ir. Lintang Prabowo, M.Pd",Checkup Rutin Saraf,0,13:17,27
+RSA-0022,RS_020,"H. Muhammad Pangestu, S.Pd",Evaluasi Tumor Otak,0,14:10,35
+RSA-0023,RS_020,Salsabila Yulianti,Trauma Saraf Tulang Belakang,1,15:11,52
+RSA-0024,RS_020,Maida Maryati,Cedera Ligamen Lutut (ACL),0,15:24,27
+RSA-0025,RS_020,Devi Prayoga,Cedera Ligamen Lutut (ACL),0,15:40,26
+RSA-0026,RS_020,Atma Sirait,Cedera Ligamen Lutut (ACL),0,15:56,27
+RSA-0027,RS_020,Lanjar Puspasari,Pendarahan Intrakranial,1,16:37,58
+RSA-0028,RS_020,Lanjar Prasetya,Pendarahan Intrakranial,1,16:58,62
+RSA-0029,RS_020,Bagus Usamah,Checkup Rutin Saraf ,0,17:22,25
+RSA-0030,RS_020,Dartono Hidayat,Cedera Ligamen Lutut (ACL),0,17:39,30
+RSA-0031,RS_020,Satya Sitompul,Checkup Rutin Saraf,0,19:11,30
+RSA-0032,RS_020,Kamidin Prakasa,Evaluasi Tumor Otak,0,19:23,42
+RSA-0033,RS_020,Salsabila Laksita,Cedera Ligamen Lutut (ACL),0,19:40,25
+RSA-0034,RS_020,Kayun Mustofa,Evaluasi Tumor Otak,0,19:59,37
+RSA-0035,RS_020,"Queen Permata, M.Kom.",Checkup Rutin Saraf,0,21:22,25
+RSA-0036,RS_020,Purwanto Kusmawati,Migrain Kronis,0,22:21,29
+RSA-0037,RS_020,"dr. Dadap Kuswoyo, S.IP",Checkup Rutin Saraf,0,22:32,29
+RSA-0038,RS_020,"Irfan Thamrin, S.Farm",Evaluasi Tumor Otak,0,23:28,39
+RSA-0039,RS_020,Nadia Habibi,Cedera Ligamen Lutut (ACL),0,23:51,29

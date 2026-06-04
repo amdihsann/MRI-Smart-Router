@@ -1,0 +1,16 @@
+# Backend venv & Python cache
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+# Frontend dependencies & Next.js cache
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env
+frontend/.env.local
+
+# OS Sampah
+.DS_Store
+Thumbs.db
