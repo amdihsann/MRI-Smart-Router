@@ -83,7 +83,11 @@ app = FastAPI(title="smart-mri-router")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:8000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -395,11 +399,11 @@ def reset_database_simulation(db: Session = Depends(get_db)):
 def simulate_surge_condition(db: Session = Depends(get_db)):
     try:
         surge_states = {
-            "RS_018": 60,  # Fatmawati (Max 55)
-            "RS_012": 52,  # Siloam (Max 50)
-            "RS_015": 45,  # Mayapada (Max 45) ->
-            "RS_011": 32,  # RSUD Pasming (Max 40)
-            "RS_016": 20   # RSPI (Max 42) ->
+            "RS_018": 60,  # Fatmawati
+            "RS_012": 52,  # Siloam
+            "RS_015": 45,  # Mayapada
+            "RS_011": 32,  # RSUD Pasming 
+            "RS_016": 50   # RSPI
         }
         
         for id_rs, occupancy in surge_states.items():

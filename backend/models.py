@@ -20,6 +20,6 @@ class PatientQueues(Base):
     id_rs = Column(String(50), ForeignKey("master_hospitals.id_rs"), default='RS_20')
     nama = Column(String(255), nullable=False)
     tipe_kasus = Column(String(255), nullable=False)
-    status_prioritas = Column(Integer, nullable=False) # 1: Gawat Darurat, 0: Biasa
-    waktu_masuk = Column(Time, nullable=False)
+    status_prioritas = Column(Integer, nullable=False) 
+    waktu_masuk = Column(String(50), nullable=False)
     durasi_menit = Column(Integer, nullable=False)

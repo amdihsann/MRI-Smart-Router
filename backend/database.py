@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # Mengambil URL database dari environment variable yang diset di docker-compose
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://mri_admin:mri_password_secure@localhost:5432/smart_mri_db")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://mri_admin:mri_password_secure@db:5432/smart_mri_db")
 
 # Pembuat mesin koneksi
 engine = create_engine(DATABASE_URL)

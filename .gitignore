@@ -11,6 +11,8 @@ frontend/out/
 frontend/.env
 frontend/.env.local
 
+.env
+
 # OS Sampah
 .DS_Store
 Thumbs.db
