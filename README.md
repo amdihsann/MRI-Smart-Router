@@ -10,29 +10,7 @@ git clone https://github.com/amdihsann/MRI-Smart-Router.git
 cd MRI-Smart-Router
 ```
 
-### 2. Isolasi Lingkungan Python (Virtual Environment)
-Masuk ke dalam direktori *backend*, lalu buat serta aktifkan `venv` baru untuk mengisolasi pustaka agar tidak bentrok dengan sistem global:
-
-```bash
-cd backend
-python -m venv venv
-
-# Aktivasi di Windows (CMD / PowerShell):
-.\venv\Scripts\Activate.ps1
-
-# Aktivasi di Mac / Linux:
-source venv/bin/activate
-```
-
-### 3. Instalasi Dependensi Pustaka Python
-Dalam kondisi *virtual environment* aktif, jalankan perintah `pip` berikut untuk menginstal seluruh pustaka Data Science dan Framework FastAPI yang dibutuhkan oleh model ARIMA:
-
-```bash
-pip install --no-cache-dir -r requirements.txt
-cd ..
-```
-
-### 4. Konfigurasi Kunci Rahasia (Berkas `.env`)
+### 2. Konfigurasi Kunci Rahasia (Berkas `.env`)
 Buat sebuah file baru bernama `.env` di dalam folder *root* utama proyek (sejajar dengan file `docker-compose.yml`). Salin dan isi variabel rahasia di bawah ini sesuai dengan kredensial Azure Maps dan Database Supabase Anda:
 
 ```env
@@ -43,7 +21,7 @@ DB_NAME=smart_mri_db
 DB_PORT=5432
 ```
 
-### 5. Orkestrasi Menggunakan Docker Compose
+### 3. Orkestrasi Menggunakan Docker Compose
 Buka terminal terintegrasi di VS Code tepat pada direktori *root* utama proyek. Jalankan perintah Docker berikut untuk membangun kontainer *backend* dan *frontend* secara otomatis di latar belakang (*detached mode*):
 
 ```bash
