@@ -5,7 +5,7 @@ import MetricsCard from "../components/MetricsCard";
 import HospitalTable from "../components/HospitalTable";
 import MriMap from "../components/MriMap";
 
-const BASE_URL = "http://localhost:8000/api/v1";
+const BASE_URL = "/api/v1";
 
 export default function Dashboard() {
   const formatDateToString = (date) => {
