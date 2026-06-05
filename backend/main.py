@@ -12,6 +12,7 @@ import joblib
 import models
 import os
 import math
+import random
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -206,9 +207,6 @@ def get_mri_forecast(date: Optional[str] = None):
         }
     
     except Exception as e:
-        import traceback
-        print("🔴 DETAIL KEGAGALAN MATEMATIKA ARIMA:")
-        traceback.print_exc()
         raise HTTPException(status_code=400, detail=f"ARIMA_CALCULATION_ERROR: {str(e)}")
     
 @app.get("/api/v1/hospital/realtime")
@@ -231,7 +229,7 @@ def get_patient_queues(db: Session = Depends(get_db)):
 @app.post("/api/v1/load-balance")
 def execute_load_balancing(db: Session = Depends(get_db)):
     try:
-        fatmawati = db.query(models.Hospitals).filter(models.Hospitals.id_rs == "RS_020").first()
+        fatmawati = db.query(models.Hospitals).filter(models.Hospitals.id_rs == "RS_018").first()
         
         if not fatmawati:
             raise HTTPException(status_code=404, detail="Data RSUP Fatmawati tidak ditemukan di database")
@@ -247,12 +245,12 @@ def execute_load_balancing(db: Session = Depends(get_db)):
             } 
         
         patients_to_route = db.query(models.PatientQueues).filter(
-            models.PatientQueues.id_rs == "RS_020",
+            models.PatientQueues.id_rs == "RS_018",
             models.PatientQueues.status_prioritas == 0
         ).limit(overload_count).all()
 
         rs_neighbors = db.query(models.Hospitals).filter(
-            models.Hospitals.id_rs != "RS_020"
+            models.Hospitals.id_rs != "RS_018"
         ).all()
 
         fatmawati_lat = fatmawati.latitude
@@ -345,15 +343,32 @@ def update_hospital_occupancy(id_rs: str, input_data: HospitalUpdateInput, db:Se
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+def generate_surge_patients(id_rs: str, count: int):
+    names = ["Budi Santoso", "Siti Aminah", "bambang Hartono", "Dewi Lestari", "Rian Hidayat"]
+    cases = ["MRI Otak - Stroke Gejala", "MRI Kepala - Vertigo Akut", "MRI Lumbal - HNP"]
+    
+    patients = []
+    for i in range(count):
+        patients.append(models.PatientQueues(
+            id_pasien=f"P_SURGE_{random.randint(1000, 9999)}",
+            nama=random.choice(names),
+            id_rs=id_rs,
+            status_prioritas=0,
+            tipe_kasus=random.choice(cases),
+            durasi_menit=random.choice([20, 30, 45]), 
+            waktu_masuk=datetime.datetime.now()
+        ))
+    return patients
+
 @app.post("/api/v1/database/reset")
 def reset_database_simulation(db: Session = Depends(get_db)):
     try:
         initial_states = {
-            "RS_020": 25,  # Fatmawati 
-            "RS_013": 48,  # Siloam 
-            "RS_016": 18,  # Mayapada 
-            "RS_012": 40,   # RSUD Pasming 
-            "RS_017": 39    # RSPI 
+            "RS_018": 37,  # Fatmawati 
+            "RS_012": 43,  # Siloam 
+            "RS_015": 43,  # Mayapada 
+            "RS_011": 45,   # RSUD Pasming 
+            "RS_016": 39    # RSPI 
         }
         
         for id_rs, occupancy in initial_states.items():
@@ -361,6 +376,11 @@ def reset_database_simulation(db: Session = Depends(get_db)):
             if hospital:
                 hospital.current_occupancy = occupancy
         
+        db.query(models.PatientQueues).filter(
+            models.PatientQueues.id_rs == "RS_018",
+            models.PatientQueues.id_pasien.like("P_SURGE_%")
+        ).delete(synchronize_session=False)
+
         db.commit()
         return {
             "status": "RESET_SUCCESS", 
@@ -375,17 +395,25 @@ def reset_database_simulation(db: Session = Depends(get_db)):
 def simulate_surge_condition(db: Session = Depends(get_db)):
     try:
         surge_states = {
-            "RS_020": 60,  # Fatmawati (Max 55)
-            "RS_013": 52,  # Siloam (Max 50)
-            "RS_016": 45,  # Mayapada (Max 45) ->
-            "RS_012": 32,  # RSUD Pasming (Max 40)
-            "RS_017": 20   # RSPI (Max 42) ->
+            "RS_018": 60,  # Fatmawati (Max 55)
+            "RS_012": 52,  # Siloam (Max 50)
+            "RS_015": 45,  # Mayapada (Max 45) ->
+            "RS_011": 32,  # RSUD Pasming (Max 40)
+            "RS_016": 20   # RSPI (Max 42) ->
         }
         
         for id_rs, occupancy in surge_states.items():
             hospital = db.query(models.Hospitals).filter(models.Hospitals.id_rs == id_rs).first()
             if hospital:
                 hospital.current_occupancy = occupancy
+
+        db.query(models.PatientQueues).filter(
+            models.PatientQueues.id_rs == "RS_018",
+            models.PatientQueues.id_pasien.like("P_SURGE_%")
+        ).delete(synchronize_session=False)
+
+        surge_patients = generate_surge_patients(id_rs="RS_018", count=5)
+        db.add_all(surge_patients)
         
         db.commit()
         return {

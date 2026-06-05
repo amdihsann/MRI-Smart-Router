@@ -1,13 +1,12 @@
 import React from "react";
 
 export default function HospitalTable({ hospitals, simulationStep, onTriggerLoadBalance }) {
-  const coreRsIds = ["RS_020", "RS_013", "RS_016", "RS_012", "RS_017"];
+  const coreRsIds = ["RS_018", "RS_012", "RS_015", "RS_016", "RS_011"];
 
   const sortedHospitals = hospitals && hospitals.length > 0 
     ? [...hospitals].sort((a, b) => {
-        // 1. Fatmawati (RS_020) WAJIB MUTLAK Nomor 1
-        if (a.id_rs === "RS_020") return -1;
-        if (b.id_rs === "RS_020") return 1;
+        if (a.id_rs === "RS_018") return -1;
+        if (b.id_rs === "RS_018") return 1;
 
         // 2. RS Core lainnya harus berada di atas RS hasil ekspansi database lainnya
         const aIsCore = coreRsIds.includes(a.id_rs);
@@ -72,7 +71,7 @@ export default function HospitalTable({ hospitals, simulationStep, onTriggerLoad
                   {/* Kolom Nama RS */}
                   <td className="py-3 px-2 font-medium text-slate-200">
                     {rs.nama_rs} 
-                    {rs.id_rs === "RS_020" && (
+                    {rs.id_rs === "RS_018" && (
                       <span className="text-xs bg-blue-500/20 text-blue-400 border border-blue-500/30 px-1.5 py-0.5 rounded ml-2">
                         HUB
                       </span>

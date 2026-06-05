@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Date, Time, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, Time, ForeignKey
 from database import Base
 
 class Hospitals(Base):
