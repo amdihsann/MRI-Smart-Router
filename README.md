@@ -30,7 +30,7 @@ docker compose up --build -d
 
 > ⚠️ **Catatan Performa:** Pastikan aplikasi Docker Desktop Anda sudah menyala di latar belakang sebelum mengeksekusi perintah ini. Proses *build* awal memakan waktu sekitar 3-5 menit untuk *layering* imej Linux.
 
-### 6. Akses dan Pengujian Aplikasi di Browser
+### 4. Akses dan Pengujian Aplikasi di Browser
 Setelah status seluruh kontainer di Docker Desktop menunjukkan warna hijau (*Running*), buka browser Anda dan akses tautan berikut:
 
 * **Frontend UI (Next.js 16 + Tailwind v4):** [http://localhost:3000](http://localhost:3000)
