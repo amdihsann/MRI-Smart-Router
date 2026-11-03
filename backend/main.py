@@ -81,16 +81,24 @@ seed_all_databases_from_csv()
 
 app = FastAPI(title="smart-mri-router")
 
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+# Tambahkan origin produksi Vercel dari environment variable.
+# Set FRONTEND_URL di Hugging Face Spaces Secrets, contoh:
+# FRONTEND_URL=https://your-app.vercel.app
+_frontend_url = os.environ.get("FRONTEND_URL", "")
+if _frontend_url:
+    ALLOWED_ORIGINS.append(_frontend_url.rstrip("/"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:8000",
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
+    allow_methods=["GET", "POST", "PUT", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

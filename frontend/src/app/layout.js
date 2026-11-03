@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'; // <-- PAKSA GENERASI SEGERA DI EDGE NETWORKS
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "../../globals.css";
 
