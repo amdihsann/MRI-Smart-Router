@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Smart-MRI Router Jakarta",
-  description: "Optimasi Distribusi Antrean MRI Berbasis AI",
+  title: "Smart-MRI Router",
+  description: "AI-Based Optimization of MRI Queue Distribution",
 };
 
 export default function RootLayout({ children }) {
