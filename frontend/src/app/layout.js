@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Smart-MRI Router",
   description: "AI-Based Optimization of MRI Queue Distribution",
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({ children }) {

@@ -10,15 +10,12 @@ services:
       - "${DB_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
     restart: always
-
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
-      interval: 3s  # Cek setiap 3 detik
-      timeout: 3s   # Batas waktu tunggu respons
+      interval: 3s
+      timeout: 3s
       retries: 5
-
     networks:
       - mri_network
 
@@ -27,41 +24,46 @@ services:
     container_name: mri_fastapi_backend
     ports:
       - "8000:8000"
+    # Instruksi mutlak agar FastAPI melakukan hot-reload saat kode diubah
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     environment:
-      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/smart_mri_db
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
       - AZURE_MAPS_KEY=${AZURE_MAPS_KEY}
       - PYTHONUNBUFFERED=1
     depends_on:
       db:
         condition: service_healthy
-
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/hospital/realtime', timeout=3)"]
       interval: 5s
       timeout: 3s
       retries: 3
-
     restart: always
-
     networks:
       - mri_network
+    volumes:
+      - ./backend:/app
 
   frontend:
-      build:
-        context: ./frontend
-        args:
-          - NEXT_PUBLIC_AZURE_MAPS_KEY=${AZURE_MAPS_KEY}
-      container_name: mri_nextjs_frontend
-      ports:
-        - "3000:3000"
-      environment:
-        - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1
-      depends_on:
-        backend:
-          condition: service_healthy 
-      restart: always
-      networks:
-        - mri_network
+    build:
+      context: ./frontend
+      args:
+        - NEXT_PUBLIC_AZURE_MAPS_KEY=${AZURE_MAPS_KEY}
+    container_name: mri_nextjs_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api/v1
+      - HOSTNAME=0.0.0.0
+    depends_on:
+      backend:
+        condition: service_healthy 
+    restart: always
+    networks:
+      - mri_network
+    # volumes:
+    #   - ./frontend:/app
+    #   - /app/node_modules
 
 volumes:
   postgres_data:
