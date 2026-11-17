@@ -21,16 +21,20 @@ When the AI detects a queue surge at the Hub, the system automatically calculate
 ## System Workflow & Simulation Scenarios
 The dashboard is designed to simulate two distinct scenarios: Normal Load and Overload Crisis. 
 
-### Scenario A: Normal Operations
-1. **Initial State:** The dashboard displays the current date, total hospitals, and available Hub capacity (e.g., 25 out of 55 slots used, leaving 30 available slots). The live tracker monitors 40 hospitals, focusing on the top 5 nearest facilities.
-2. **Demand Forecasting:** The user selects "Tomorrow" to trigger the SARIMAX prediction model.
-3. **Time Travel (Actual vs Predicted):** The user advances the system state to "Today" to reveal the actual patient arrivals compared to the AI's forecast.
-4. **Router Execution:** Clicking the Spatial Router execution button triggers a logic check. Since the predicted capacity is within safe limits, the system triggers a standard popup alert confirming normal operations without requiring reroutes.
+### Scenario A: Normal & Full-Capacity Operations
+1. **Initial State & Server Warm-Up:** Upon loading, the dashboard establishes a connection with the cloud backend (displaying a temporary cold-start indicator if waking from sleep) and presents the system date, a 2-card KPI summary (40 monitored network hospitals and RSUP Fatmawati Hub capacity of 55 MRI slots), a scrollable 40-hospital directory, and an interactive Azure Maps view.
+2. **Demand Forecasting (`Step 1`):** The user selects a target date from the date picker and clicks **`1 Prediksi AI`** to run the SARIMAX model. Quadrant 4 displays two distinct cards: an **AI Analytical Insight** (evaluating predicted patient volume against the 55-slot Hub limit) and a **Next-Step Action Guide**.
+3. **Time Travel & Capacity Evaluation (`Step 2`):** Clicking **`2 Time-Travel`** synchronizes real-time occupancy across all 40 hospitals to the selected target date:
+   - **Safe Capacity (`< 55` patients):** The dashboard shifts to a **Green (`SAFE CAPACITY`)** theme, confirming sufficient free MRI slots at RSUP Fatmawati.
+   - **Full Capacity (`=== 55` patients):** The dashboard shifts to an **Amber (`FULL CAPACITY`)** standby theme, indicating 100% slot utilization with zero excess patients.
+4. **No Unnecessary Rerouting:** Because no capacity breach occurs (`≤ 55` patients), the **`3 Eksekusi Spatial Router`** button remains hidden, preventing redundant rerouting operations.
 
-### Scenario B: Overload Crisis & Load Balancing
-1. **Triggering Crisis:** After a page refresh, the user activates the **"Krisis Overload"** (Overload Crisis) mode.
-2. **Capacity Breach:** Repeating the forecasting and time-travel steps reveals that the incoming patient numbers drastically exceed the Hub's physical capacity.
-3. **Spatial Load Balancing:** Clicking the Spatial Router execution button now triggers the core algorithm. The system dynamically reallocates excess patients to the nearest available Spoke hospitals and visually draws the transfer routes on the interactive map.
+### Scenario B: Overload Crisis & Spatial Load Balancing
+1. **Triggering Surge Scenario:** In Quadrant 3, the user clicks **`Simulate Surge (Lonjakan)`** to inject an artificial emergency patient surge into the RSUP Fatmawati database (or selects a high-demand peak date), resetting the pipeline to `Step 0/3` for end-to-end validation.
+2. **Capacity Breach Detection (`Step 1` → `Step 2`):** After running **`1 Prediksi AI`** and **`2 Time-Travel`**, the system detects that Hub occupancy exceeds its 55-patient threshold (`> 55`). The entire interface transitions into a **Red (`CRISIS MODE`)** alert state and unlocks the **`3 Eksekusi Spatial Router`** action button.
+3. **Spatial Load Balancing & Patient Audit Log (`Step 3`):** Clicking **`3 Eksekusi Spatial Router`** executes the road-network routing algorithm, transitioning the dashboard to a **Green (`ROUTER ACTIVE`)** state that:
+   - Draws green evacuation routes from RSUP Fatmawati to the nearest available spoke hospitals on the Azure Maps canvas.
+   - Displays a **Distribution Summary** per destination hospital alongside a **scrollable Patient Transfer Log table** detailing each reassigned patient and their target facility.
 
 ## Tech Stack (Monorepo Architecture)
 * **Frontend:** Next.js (App Router), React, Tailwind CSS, Vercel
